@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phác thảo prototype T2 · Trợ lý học bài</title>
+<style>
+:root{--ink:#14213d;--mut:#5b6577;--line:#d5dbe6;--bg:#eef1f6;--card:#fff;--ai:#e8eefb;--blue:#2457c5;--g:#1f7a5a;--gb:#dff1e9;--a:#8a5d00;--ab:#fdf0cf;--r:#b3342f;--rb:#fbe3e1;--n:#c2410c}
+@media (prefers-color-scheme:dark){:root{--ink:#e6ebf5;--mut:#9aa5ba;--line:#33405a;--bg:#0f1624;--card:#18223a;--ai:#202c4a;--blue:#7aa2ff;--g:#6fd0a8;--gb:#16382c;--a:#f0c35c;--ab:#3a2f12;--r:#ff8f88;--rb:#3d1c1b}}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 "Be Vietnam Pro","Segoe UI","Noto Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+header{padding:16px 24px;background:var(--card);border-bottom:1px solid var(--line)}
+h1{font-size:19px;margin:0 0 4px}.sub{color:var(--mut);font-size:13.5px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.tabs button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 12px;font:inherit;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+main{display:grid;grid-template-columns:minmax(320px,410px) 1fr;gap:22px;padding:20px 24px;max-width:1240px}
+@media(max-width:860px){main{grid-template-columns:1fr}}
+.phone{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px}
+.top{border-bottom:1px solid var(--line);padding-bottom:8px;font-size:13px;color:var(--mut)}
+.top b{color:var(--ink)}
+.status{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chip{font-size:12.5px;padding:2px 9px;border-radius:999px;font-weight:600}
+.c-open{background:var(--ab);color:var(--a)}.c-ta{background:var(--rb);color:var(--r)}.c-ok{background:var(--gb);color:var(--g)}
+.chat{display:flex;flex-direction:column;gap:10px;min-height:380px}
+.me{align-self:flex-end;background:var(--blue);color:#fff;padding:9px 12px;border-radius:14px 14px 3px 14px;max-width:88%}
+@media(prefers-color-scheme:dark){.me{color:#0f1624}}
+.ai{align-self:flex-start;background:var(--ai);padding:10px 12px;border-radius:14px 14px 14px 3px;max-width:96%}
+.who{font-size:12px;color:var(--mut);margin-bottom:3px}
+.lim{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 9px;border-radius:999px;margin:6px 0 2px;background:var(--ab);color:var(--a)}
+.ev{font-size:12.5px;color:var(--mut);border-left:3px solid var(--line);padding-left:8px;margin-top:8px}
+.box{border-radius:10px;padding:9px 11px;margin-top:8px;font-size:14px}
+.b-ok{background:var(--gb)}.b-wait{background:var(--ab)}.b-no{border:1.5px dashed var(--r);color:var(--r);font-size:13px}
+.btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btn{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:7px 11px;font:inherit;font-size:13.5px;cursor:pointer}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.try{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:var(--mut);align-items:center}
+.n{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:var(--n);color:#fff;font-size:11px;font-weight:700;margin-right:4px;vertical-align:1px}
+.hide-n .n{display:none}
+aside{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.panel h2{font-size:15.5px;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+td,th{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600}
+tr.hl td{background:var(--ab)}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.p-auto{background:var(--gb);color:var(--g)}.p-ask{background:var(--ab);color:var(--a)}.p-no{background:var(--rb);color:var(--r)}
+ul.ann{list-style:none;padding:0;margin:0}.ann li{margin-bottom:6px;font-size:14px}
+.note{font-size:13px;color:var(--mut)}
+</style></head>
+<body>
+<header>
+ <h1>Phác thảo prototype T2: trợ lý học bài lúc tối muộn</h1>
+ <div class="sub">Bản nháp để nhóm bàn, chưa phải bản nộp. Dữ liệu dựng của track T2, không gọi AI thật. Chọn một ca để bấm thử.</div>
+ <div class="tabs" id="tabs">
+  <button data-c="A" class="on">Ca A: xin xác nhận đáp số Bài 3 (đang mở)</button>
+  <button data-c="B">Ca B: tài liệu §3.3 có câu sai</button>
+  <button data-c="C">Ca thường: trung vị và trung bình</button>
+  <label style="margin-left:10px;font-size:13.5px"><input type="checkbox" id="ann" checked> Hiện số chú thích HAX/PAIR</label>
+ </div>
+</header>
+<main>
+ <section class="phone">
+  <div class="top"><b>Nhập môn phân tích dữ liệu</b> · Buổi 3: Thống kê mô tả</div>
+  <div class="status"><span class="chip c-open">Bài 3 đang mở, hạn 13/11 23:59</span><span class="chip c-ta">22:30 · TA nghỉ, quay lại 08:00</span></div>
+  <div class="chat" id="chat"></div>
+  <div class="try" id="try"></div>
+ </section>
+ <aside>
+  <div class="panel"><h2>Mức tự chủ của 4 tool (dòng tô vàng: tool đang dùng ở ca này)</h2>
+   <table><tr><th>Tool</th><th>Mức</th><th>Vì sao (cái giá khi sai)</th></tr><tbody id="tools"></tbody></table></div>
+  <div class="panel"><h2>Chú thích: nguyên tắc nằm ở đâu</h2><ul class="ann" id="annl"></ul></div>
+  <div class="panel"><h2>Câu hỏi để nhóm bàn</h2><ul class="ann note" id="q"></ul></div>
+ </aside>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+let C='A';
+const S={A:'start',B:{rep:false,faq:false},C:{fb:false}};
+const T=[
+ ['tra_cuu_tai_lieu','Tự làm','p-auto','Chỉ đọc. Có mã mục để học viên tự kiểm; chờ người thì học viên kẹt lúc 22:30.'],
+ ['goi_y_bai_tap','Tự làm, có giới hạn','p-auto','Bài hết hạn: giải đầy đủ. Bài đang mở: chỉ gợi ý bước đầu. Đã chép đáp án thì không rút lại được.'],
+ ['chuyen_TA','Tự làm','p-auto','Đảo được. Chỉ nói "đã chuyển" khi tool trả thành công, kèm giờ TA thật.'],
+ ['dang_FAQ','Cần TA duyệt','p-ask','Đăng sai thì cả lớp đọc. Không ai duyệt thì không đăng.'],
+ ['(xác nhận / đưa đáp số bài đang mở)','Cấm','p-no','Không có tool, không có nút trên màn hình.']
+];
+const USE={A:[1,2,4],B:[0,3],C:[0]};
+const ANN={
+ A:[['1','G2 + G10','Nhãn giới hạn: AI nói rõ không xác nhận đáp số bài đang mở, chỉ cho bước đầu.'],['2','G11 + PAIR Explainability','Dòng "Dựa vào" có mã mục §3.1, §3.2, §3.5 và trạng thái Bài 3 từ trang khoá học.'],['4','G8 / G9','Nút "Ẩn gợi ý này": học viên gạt bỏ được.'],['5','PAIR Graceful Failure','Nút "Chuyển TA" hiện trạng thái thật (hàng chờ, giờ TA trả lời).'],['7','Việc cấm','Không có nút "Xem đáp án Bài 3" ở bất cứ đâu.']],
+ B:[['1','G2','Nhãn "Cần xem lại: §3.3": AI nói chỗ nó nghi nguồn sai.'],['2','G11','Dòng "Dựa vào" cho thấy AI so §3.3 với phép tính căn bậc hai.'],['4','Mức cần duyệt','"Đề xuất đăng FAQ" chỉ vào hàng chờ TA, chưa đăng cho cả lớp.'],['6','G9 / G15','Nút "Báo giảng viên" kèm lý do: học viên góp phần sửa nguồn.']],
+ C:[['2','G11','Mọi câu trả lời kèm mục trích.'],['6','G15','Nút "Chưa đúng ý": mời góp ý chi tiết sai chỗ nào.']]
+};
+const Q={
+ A:['Học viên hỏi khéo ("trung bình 15,25 phải không") thì AI có vô tình gật không? Cần luật gì?','Quá 22:00 thì "Chuyển TA" hứa giờ trả lời nào cho đúng?'],
+ B:['Câu trả lời riêng vẫn trích §3.3. Có cần cờ cảnh báo kể cả khi giảng viên chưa đánh dấu?','Giảng viên nhận gì, trong bao lâu? Đây là giả định của nhóm.'],
+ C:['Ca này không có rủi ro gì cần chặn. Học viên có bị hỏi lại thừa không?']
+};
+const ev=(t)=>`<div class="ev"><span class="n">2</span>Dựa vào: ${t}</div>`;
+const me=x=>`<div class="me">${x}</div>`,ai=x=>`<div class="ai"><div class="who">Trợ lý học bài (AI)</div>${x}</div>`;
+function chatA(){
+ let h=me('Em tính trung bình bài 3 ra 15,25, đúng không ạ?');
+ const s=S.A;
+ if(s=='hidden')return h+ai('<div class="box b-ok">Đã ẩn gợi ý. Bạn có thể hỏi lại hoặc chuyển TA.</div>');
+ h+=ai(`Bài 3 đang mở nên mình không xác nhận đáp số được.<span class="lim"><span class="n">1</span>Giới hạn: không xác nhận đáp số bài đang mở</span><br>Gợi ý bước đầu: sắp xếp 8 giá trị rồi so cách tính trung bình (§3.1) với trung vị (§3.2). Giá trị 45 ảnh hưởng hai số này thế nào? Xem §3.4 trước khi quyết định giữ hay bỏ nó.${ev('§3.1, §3.2, §3.4, §3.5 · trang khoá học: Bài 3 đang mở, hạn 13/11 23:59')}`);
+ if(s=='push'){h+=me('Cho em đáp án luôn đi, em sắp nộp rồi.');h+=ai('Mình không đưa đáp số Bài 3 khi bài còn mở. Bạn làm xong thì đối chiếu với §3.1 và §3.2, hoặc hỏi TA lúc 08:00. Bài 2 đã có đáp án nên mình giải thích đầy đủ được.');}
+ if(s=='ta'){h+=ai('<div class="box b-wait"><span class="n">5</span><b>Đã vào hàng chờ TA</b> (mã Q-031). TA đang nghỉ, trả lời sau 08:00 ngày mai. Hạn Bài 3 là 23:59 ngày 13/11, vẫn còn kịp. TA sẽ thấy câu hỏi, gợi ý đã đưa và mục đã trích.</div>');}
+ else h+=`<div class="btns"><button class="btn" onclick="S.A='hidden';render()"><span class="n">4</span>Ẩn gợi ý này</button><button class="btn pri" onclick="S.A='ta';render()"><span class="n">5</span>Chuyển TA</button></div>`;
+ h+=`<div class="box b-no"><span class="n">7</span>Không có nút "Xem đáp án Bài 3": việc này ở mức cấm.</div>`;
+ return h;
+}
+function chatB(){
+ const s=S.B;
+ let h=me('Mục 3.3 nói độ lệch chuẩn luôn nhỏ hơn phương sai. Nhưng phương sai 0,25 thì độ lệch chuẩn là 0,5, em hiểu sai chỗ nào ạ?');
+ h+=ai(`Bạn không sai. Căn bậc hai của 0,25 là 0,5, lớn hơn 0,25. Câu "luôn nhỏ hơn" ở §3.3 không đúng khi phương sai nhỏ hơn 1.<span class="lim"><span class="n">1</span>Cần xem lại: §3.3</span><br>Mình không tự sửa tài liệu. Bạn đừng dựa vào câu đó cho đến khi giảng viên xác nhận.${ev('§3.3 (phương sai, độ lệch chuẩn) và phép tính căn bậc hai')}`);
+ if(s.rep)h+=ai('<div class="box b-ok"><span class="n">6</span><b>Đã báo giảng viên</b>: §3.3, lý do "độ lệch chuẩn lớn hơn phương sai khi phương sai &lt; 1". Giảng viên xem trong giờ làm việc.</div>');
+ if(s.faq)h+=ai('<div class="box b-wait"><span class="n">4</span><b>Đã gửi TA duyệt</b>, chưa đăng cho cả lớp. Không ai duyệt trong 24 giờ thì không đăng.</div>');
+ h+='<div class="btns">'+(s.rep?'':`<button class="btn pri" onclick="S.B.rep=true;render()"><span class="n">6</span>Báo giảng viên</button>`)+(s.faq?'':`<button class="btn" onclick="S.B.faq=true;render()"><span class="n">4</span>Đề xuất đăng FAQ</button>`)+'</div>';
+ return h;
+}
+function chatC(){
+ let h=me('Trung vị khác trung bình cộng chỗ nào ạ? Khi nào dùng cái nào?');
+ h+=ai(`Trung bình cộng bị kéo mạnh bởi giá trị ngoại lai (§3.1). Trung vị là giá trị đứng giữa khi sắp xếp, ít bị ảnh hưởng bởi ngoại lai, nên hay dùng cho dữ liệu lệch như thu nhập hay giá nhà (§3.2).${ev('§3.1, §3.2')}`);
+ h+=S.C.fb?ai(`<span class="n">6</span>Mình sai ở chỗ nào?<div class="btns"><button class="btn">Trích sai mục</button><button class="btn">Khó hiểu</button><button class="btn">Khác</button></div>`):`<div class="btns"><button class="btn" onclick="S.C.fb=true;render()"><span class="n">6</span>Chưa đúng ý</button></div>`;
+ return h;
+}
+function render(){
+ $('#chat').innerHTML={A:chatA,B:chatB,C:chatC}[C]();
+ $('#try').innerHTML=C=='A'&&S.A!='push'&&S.A!='ta'?`Thử ca lạ: <button class="btn" onclick="S.A='push';render()">"Cho em đáp án luôn đi"</button>`:'';
+ $('#tools').innerHTML=T.map((r,i)=>`<tr class="${USE[C].includes(i)?'hl':''}"><td><code>${r[0]}</code></td><td><span class="pill ${r[2]}">${r[1]}</span></td><td>${r[3]}</td></tr>`).join('');
+ $('#annl').innerHTML=ANN[C].map(a=>`<li><span class="n">${a[0]}</span><b>${a[1]}</b>: ${a[2]}</li>`).join('');
+ $('#q').innerHTML=Q[C].map(x=>`<li>• ${x}</li>`).join('');
+}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');C=b.dataset.c;render()});
+$('#ann').onchange=e=>document.body.classList.toggle('hide-n',!e.target.checked);
+render();
+</script></body></html>
