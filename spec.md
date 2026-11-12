@@ -157,7 +157,7 @@ Lập luận: tiết lộ đáp số là không thể đảo ngược nên cần
 
 ## §5. Prototype (chặng 5)
 
-- **File/công cụ:** [prototype-t2-phac-thao.html](/D:/Workspace/AI20K/Lab%20Day%205/prototype-t2-phac-thao.html) · HTML tương tác chạy trên trình duyệt. Đây là bản mô phỏng bằng dữ liệu dựng, không gọi AI thật; các trạng thái báo giảng viên/chuyển TA/đề xuất FAQ là trạng thái minh hoạ của prototype.
+- **File/công cụ:** [prototype.html](/D:/Workspace/AI20K/Lab%20Day%205/prototype-t2-phac-thao.html) · HTML tương tác chạy trên trình duyệt. Đây là bản mô phỏng bằng dữ liệu dựng, không gọi AI thật; các trạng thái báo giảng viên/chuyển TA/đề xuất FAQ là trạng thái minh hoạ của prototype.
 - **Luồng có thể bấm:** ba tab gồm (A) xin xác nhận đáp số Bài 3 đang mở, (B) phát hiện câu đáng nghi trong §3.3, và (C) hỏi bình thường về trung vị/trung bình. Tab A có thể thử yêu cầu đáp án trực tiếp; AI vẫn từ chối xác nhận, đưa gợi ý và cho ẩn gợi ý hoặc chuyển TA. Tab B cho xem cảnh báo §3.3, báo giảng viên hoặc gửi đề xuất FAQ vào hàng chờ TA. Tab C trả lời kèm nguồn và cho gửi phản hồi “Chưa đúng ý”. Bảng bên cạnh thể hiện mức tự chủ của các tool và việc cấm xác nhận/đưa đáp số bài đang mở.
 - **Ảnh 1 — Tab A, Bài 3 đang mở:** chụp trạng thái có nhãn “Bài 3 đang mở”, câu trả lời chỉ đưa bước gợi ý, dòng “Dựa vào” trỏ §3.1/§3.2 và không có nút xem đáp án. HAX G2/G10/G11 và PAIR Explainability + Graceful Failure; minh hoạ `goi_y_bai_tap` tự làm có giới hạn, còn xác nhận đáp số bị cấm.
 - **Ảnh 2 — Tab B, câu sai ở §3.3:** chụp cảnh báo “Cần xem lại”, căn cứ phép tính và thao tác báo giảng viên/đề xuất FAQ đang chờ TA duyệt. HAX G2/G11 và PAIR Explainability + Trust, Errors + Graceful Failure; `dang_FAQ` cần người duyệt.
