@@ -2,13 +2,14 @@
 
 **Lớp:** L3A · **Bàn / zone:**  · **Track:** T2
 
-| Họ và Tên        | Mã Học Viên | Việc đã làm |
-|------------------|-------------|---|
-| Lê Thành Đạt     | 2A202603579 |  |
-| Dương Thanh Bình | 2A202603531 |  |
-| Nguyễn Đức Trọng | 2A202603644 |  |
+| Họ và Tên        | Mã Học Viên | Việc đã làm                                                                                                                                                                 |
+|------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Lê Thành Đạt     | 2A202603579 | R1 · Lát cắt & phạm vi<br/>R3.3 · Nguyên tắc HAX/PAIR gắn với giao diện                                                                                                     |
+| Dương Thanh Bình | 2A202603531 | R2.1 · Bảng kịch bản  <br/>R3.1 · Kịch bản #1 · Tài liệu §3.3 có câu sai                                                                                                                                                      |
+| Nguyễn Đức Trọng | 2A202603644 | R3.2 · Kịch bản #6 · Xin xác nhận đáp số bài 3 đang mở<br/>R3.4 · Loại lỗi và cách sửa<br/>R3.5 · Lỗi câu chữ không thể tự cứu |
+Cả nhóm|| R2.2 · Hai kịch bản đắt nhất <br/>R4 · Mức tự chủ<br/>R5 · Prototype<br/>R6 · Tốt là gì<br/>R7 · Demo & phân công                                                                                                                                               |
 
-> Một quyết định = các phương án đã cân nhắc · phương án chọn · lý do chọn · lý do loại phương án khác. Mỗi quyết định cần bằng chứng cụ thể từ tool, dữ liệu track, sản phẩm tham khảo hoặc prototype.
+
 
 ## §1. Lát cắt & phạm vi
 
