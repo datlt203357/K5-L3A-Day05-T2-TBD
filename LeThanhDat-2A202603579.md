@@ -1,0 +1,14 @@
+## §1. Lát cắt & phạm vi
+
+- **Lát cắt:** Trong trợ lý học bài của trang khoá học (kiểu ChatGPT Study mode), khi học viên đang hỏi bài lúc tối muộn, khi không còn ai để hỏi, AI giảng kèm trích tài liệu, hỏi lại cho rõ, gợi ý từng bước, hay nói thẳng “tài liệu không có, hỏi giảng viên”, để học viên hiểu đúng bài mình đang học, không chép đáp án, không học sai mà không biết.
+- **Không đưa hoặc xác nhận đáp số bài đang mở:** Bài tập 3 đang mở đến 13/11/2026 23:59; đưa đáp án hoặc chỉ nói “đúng rồi” đều tiết lộ kết quả, làm mất cơ hội tự làm và tự kiểm tra của học viên. AI chỉ gợi ý bước đầu hoặc hỏi gợi mở để học viên tự suy luận.
+- **Không bịa nguồn tài liệu:** Tài liệu buổi 3 không có slide đánh số, nên AI không được viện dẫn “slide 12” hay nguồn không tồn tại. Bịa nguồn khiến học viên không thể kiểm tra căn cứ và dễ tin vào thông tin không có trong tài liệu khoá học.
+- **Không khẳng định tài liệu đúng khi có dấu hiệu sai:** Mục §3.3 ghi “độ lệch chuẩn luôn nhỏ hơn phương sai”, nhưng điều này không đúng trong mọi trường hợp. Nếu phát hiện mâu thuẫn, AI cần nêu rõ câu đáng nghi, giải thích giới hạn và hướng dẫn học viên hỏi TA/giảng viên, thay vì lặp lại nội dung sai như sự thật.
+
+### 3.3 Nguyên tắc HAX/PAIR gắn với giao diện
+
+| **Nguyên tắc**                                                          | **Vị trí cụ thể trên prototype**                                                                                                                                    | **Áp dụng**                                                                                |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **HAX G11 — Giải thích vì sao**; **PAIR Explainability + Trust**        | #1: thẻ trích §3.3 hiển thị nguyên văn câu đáng nghi. #6: dòng giải thích “Bài 3 đang mở” cùng thẻ §3.1 và §3.2.                                                    | Cho học viên thấy căn cứ và lý do AI giới hạn câu trả lời.                                 |
+| **HAX G10 — Thu hẹp phạm vi khi nghi ngờ**                              | #1: cảnh báo nội dung cần kiểm tra và không đưa nó lên FAQ. #6: chỉ có nút gợi ý bước đầu, không có nút xác nhận đáp số.                                            | Khi có rủi ro, AI chỉ làm phần an toàn hơn.                                                |
+| **HAX G2 — Nói rõ mức độ đáng tin**; **PAIR Errors + Graceful Failure** | #1: nhãn “Cần xem lại”, phân biệt phép tính với tài liệu chưa được giảng viên xác nhận, kèm nút báo lỗi/hỏi TA. #6: nêu giới hạn bài đang mở và đường tiếp tục học. | Tránh tạo cảm giác chắc chắn giả; đưa ra bước tiếp theo khi AI không thể làm theo yêu cầu. |
